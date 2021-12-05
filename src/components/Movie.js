@@ -4,24 +4,24 @@ import style from "./Movie.module.css";
 
 function Movie({ id, title_long, medium_cover_image, genres, summary }) {
   return (
-    <div className={style.Movie}>
+    <div className={style.movie}>
       <img
         alt={title_long}
-        className={style.Movie_img}
+        className={style.movie_img}
         src={medium_cover_image}
       ></img>
       <div>
         <h2>
-          <Link to={`/movie/${id}`} className={style.Movie_title}>
+          <Link to={`/movie/${id}`} className={style.movie_title}>
             {title_long}
           </Link>
         </h2>
-        <ul>
+        <ul className={style.movie_genres}>
           {genres.map((g) => (
             <li key={g}>{g}</li>
           ))}
         </ul>
-        <p>{summary}</p>
+        <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}</p>
       </div>
     </div>
   );
